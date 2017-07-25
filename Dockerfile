@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 EXPOSE 9130
+CMD ["/bin/unifi_exporter"]
 
 RUN apk add --update --virtual build-deps go git musl-dev && \
     go get github.com/mdlayher/unifi_exporter/cmd/unifi_exporter && \
@@ -9,4 +10,3 @@ RUN apk add --update --virtual build-deps go git musl-dev && \
     rm -rf /var/cache/apk/* ~/go/
 
 USER nobody
-ENTRYPOINT ["/bin/unifi_exporter"]
