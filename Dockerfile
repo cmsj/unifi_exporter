@@ -9,4 +9,4 @@ RUN apk add --update --virtual build-deps go git musl-dev && \
     apk del build-deps && \
     rm -rf /var/cache/apk/* ~/go/
 
-USER nobody
+USER root
