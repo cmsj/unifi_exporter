@@ -1,12 +1,8 @@
-FROM alpine:latest
-
-EXPOSE 9130
-CMD ["/bin/unifi_exporter"]
-
-RUN apk add --update --virtual build-deps go git musl-dev && \
-    go get github.com/mdlayher/unifi_exporter/cmd/unifi_exporter && \
+FROM centos:latest
+MAINTAINER cmsj@tenshu.net
+RUN yum install -y golang-bin git && \
     mv ~/go/bin/unifi_exporter /bin/ && \
-    apk del build-deps && \
-    rm -rf /var/cache/apk/* ~/go/
-
-USER root
+    yum clean all && \
+    rm -rf ~/go/
+EXPOSE 9130
+ENTRYPOINT /bin/unifi_exporter
