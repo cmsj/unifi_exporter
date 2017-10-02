@@ -6,4 +6,4 @@ RUN yum install -y golang-bin git && \
     yum clean all && \
     rm -rf ~/go/
 EXPOSE 9130
-ENTRYPOINT /bin/unifi_exporter
+CMD ["/bin/unifi_exporter"]
